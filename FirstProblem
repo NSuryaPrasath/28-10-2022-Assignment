@@ -1,0 +1,70 @@
+package newclass;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+
+public class FirstProblem
+{
+public static String sort(String s)
+{
+	int l=s.length();
+	if(l==1)
+	{
+		return s;
+	}
+	else
+	{
+		char[] st=s.toCharArray();
+		Arrays.sort(st);
+		String er="";
+		for(int i=0;i<st.length;i++)
+		{
+			er+=st[i];
+		}
+		return er;
+	}
+}
+public static void main(String[] args) 
+{
+	Scanner scanner=new Scanner(System.in);
+	int input=scanner.nextInt();
+	List<String> result=new ArrayList<String>();
+	Set<String> val=new HashSet<String>();
+		String str1=scanner.next();
+		String str2=scanner.next();
+		for(int j=0;j<str1.length();j++)
+		{
+		for(int i=j+1;i<str1.length();i++)
+		{
+			if(str1.charAt(j)==str1.charAt(i))
+			{
+				val.add(str1.charAt(j)+"");
+				result.add(str1.charAt(j)+"");
+			}
+		}
+		}
+		int str1len=str1.length(),str2len=str2.length(),rev=str1len-1,rev1=str2len-1;
+			for(int j=1;j<str1len;j++)
+			{
+				result.add(str1.substring(0,j));
+				result.add(sort(str1.substring(rev--,str1len)));
+			}
+			for(int k=0;k<result.size();k++)
+			{
+				for(int j=k+1;j<result.size();j++)
+				{
+					if(result.get(k).equals(result.get(j)))
+					{
+						val.add(result.get(k));
+					}
+				}
+			}
+			System.out.println(val.size());
+	scanner.close();
+}
+}
+
