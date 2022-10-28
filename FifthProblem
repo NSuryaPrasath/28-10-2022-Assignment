@@ -1,0 +1,43 @@
+package newclass;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class FifthProblem 
+{
+	public static void main(String[] args) 
+	{
+		Scanner scanner=new Scanner(System.in);
+		int count=1,min=Integer.MAX_VALUE;
+		HashMap<Integer,Integer> indexValue=new HashMap<Integer,Integer>();
+		System.out.print("INPUT :\nN = ");
+		int N=scanner.nextInt();
+		System.out.print("K = ");
+		int K=scanner.nextInt();
+		int[] A=new int[N];
+		System.out.print("\nEnter "+N+" Array Elements for A:\n");
+		for(int i=0;i<N;i++)
+		{
+			System.out.print((i+1)+" => ");
+			A[i]=scanner.nextInt();
+		}
+		for(int i=0;i<N;i++)
+		{
+			for(int j=i+1;j<N;j++)
+			{
+				if(A[i]==A[j])
+				{
+					indexValue.put(A[i], j);
+				}
+			}
+			for(int value:indexValue.values())
+			{
+				if(min>value)
+				{
+					min=value;
+				}
+			}
+		}
+		System.out.println("\nOUTPUT : "+min);
+	}
+}
