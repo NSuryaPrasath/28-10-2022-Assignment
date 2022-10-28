@@ -1,0 +1,67 @@
+package newclass;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+public class ThirdProblem 
+{
+	public static void main(String[] args) 
+	{
+		int total=0,count=0,max=0;
+		Scanner scanner=new Scanner(System.in);
+		System.out.print("Input : \nN = ");
+		int arrayLength=scanner.nextInt();
+		int[] array=new int[arrayLength];
+		System.out.print("\nEnter "+arrayLength+" Array Elements :\n");
+		for(int i=0;i<arrayLength;i++)
+		{
+			System.out.print((i+1)+" => ");
+			array[i]=scanner.nextInt();
+		}
+		HashMap<Integer,ArrayList<Integer>> output=new HashMap<Integer,ArrayList<Integer>>();
+		ArrayList<Integer> value=new ArrayList<Integer>();
+		int o=0;
+		for(int i=0;i<arrayLength;i++)
+		{
+			int len=1;
+			total=array[i];
+			for(int j=i+1;j<arrayLength;j++)
+			{
+				total+=array[j];
+				len++;
+				if(total==0)
+				{
+					for(int f=i;f<=j;f++)
+					{
+						value.add(array[f]);
+					}
+					count=len;
+					output.put(o,value);
+					o++;
+				}
+				value.clear();
+			if(max<count)
+			{
+				max=count;
+			}
+		}
+		int ma=0;
+		int index=0;
+		System.out.println(output.get(1));
+		for(int d=0;d<output.size();d++)
+		{
+			
+			if(ma<output.get(d).size())
+			{
+				ma=output.get(d).size();
+				index=d;
+			}
+			
+		}
+		System.out.println("Output : "+max);
+		scanner.close();
+	}
+}
