@@ -1,10 +1,9 @@
 package newclass;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class ThirdProblem 
 {
@@ -21,11 +20,11 @@ public class ThirdProblem
 			System.out.print((i+1)+" => ");
 			array[i]=scanner.nextInt();
 		}
-		HashMap<Integer,ArrayList<Integer>> output=new HashMap<Integer,ArrayList<Integer>>();
-		ArrayList<Integer> value=new ArrayList<Integer>();
+		HashMap<Integer,Set<Integer>> output=new HashMap<Integer,Set<Integer>>();
 		int o=0;
 		for(int i=0;i<arrayLength;i++)
 		{
+			Set<Integer> set=new HashSet<Integer>();
 			int len=1;
 			total=array[i];
 			for(int j=i+1;j<arrayLength;j++)
@@ -36,32 +35,19 @@ public class ThirdProblem
 				{
 					for(int f=i;f<=j;f++)
 					{
-						value.add(array[f]);
+						set.add(array[f]);
 					}
 					count=len;
-					output.put(o,value);
-					o++;
+					output.put(o++, set);
 				}
-				value.clear();
+			}
 			if(max<count)
 			{
 				max=count;
 			}
 		}
-		int ma=0;
-		int index=0;
-		System.out.println(output.get(1));
-		for(int d=0;d<output.size();d++)
-		{
-			
-			if(ma<output.get(d).size())
-			{
-				ma=output.get(d).size();
-				index=d;
-			}
-			
-		}
 		System.out.println("Output : "+max);
+		System.out.println("The SubArray is "+output.get(0));
 		scanner.close();
 	}
 }
