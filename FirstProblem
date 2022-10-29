@@ -33,49 +33,43 @@ public class FirstProblem
 		Scanner scanner=new Scanner(System.in);
 		int input=scanner.nextInt();
 		String[] str=new String[input];
-//		List<String> result=new ArrayList<String>();
-//		Set<String> val=new HashSet<String>();
 		for(int z=0;z<str.length;z++)
 		{
 			str[z]=scanner.next();
-		}
-			//String str1=scanner.next();
-			//String str2=scanner.next();
-			
-			for(int g=0;g<str.length;g++)
-			{
-				List<String> result=new ArrayList<String>();
-				Set<String> val=new HashSet<String>();
+		}	
+		for(int g=0;g<str.length;g++)
+		{
+			List<String> result=new ArrayList<String>();
+			Set<String> val=new HashSet<String>();
 			for(int j=0;j<str[g].length();j++)
 			{
-			for(int i=j+1;i<str[g].length();i++)
-			{
-				if(str[g].charAt(j)==str[g].charAt(i))
+				for(int i=j+1;i<str[g].length();i++)
 				{
-					val.add(str[g].charAt(j)+"");
-					result.add(str[g].charAt(j)+"");
-				}
-			}
-			}
-			int str1len=str[g].length(),rev=str1len-1;
-				for(int j=1;j<str1len;j++)
-				{
-					result.add(str[g].substring(0,j));
-					result.add(sort(str[g].substring(rev--,str1len)));
-				}
-				for(int k=0;k<result.size();k++)
-				{
-					for(int j=k+1;j<result.size();j++)
+					if(str[g].charAt(j)==str[g].charAt(i))
 					{
-						if(result.get(k).equals(result.get(j)))
-						{
-							val.add(result.get(k));
-						}
+						val.add(str[g].charAt(j)+"");
+						result.add(str[g].charAt(j)+"");
 					}
 				}
-				System.out.print(val.size()+"\n");
 			}
+			int str1len=str[g].length(),rev=str1len-1;
+			for(int j=1;j<str1len;j++)
+			{
+				result.add(str[g].substring(0,j));
+				result.add(sort(str[g].substring(rev--,str1len)));
+			}
+			for(int k=0;k<result.size();k++)
+			{
+				for(int j=k+1;j<result.size();j++)
+				{
+					if(result.get(k).equals(result.get(j)))
+					{
+						val.add(result.get(k));
+					}
+				}
+			}
+			System.out.print(val.size()+"\n");
+		}
 		scanner.close();
 	}
-
 }
